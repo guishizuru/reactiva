@@ -1,19 +1,45 @@
-import React from 'react';
-import Header from '../components/Header';
-import Button from '../components/Button';
+import React, {useState} from 'react';
+import MensagemCard from '../components/MensagemCard';
+
+
 
 export default function Home() {
-    function handleButtonClick() {
-        alert('Bem-vindo à HomePage!');
-    }
+    const [mensagem, setMensagem] = useState('');
+    const [resposta, setResposta] = useState('');
 
-    return (
-        <div style={{color:'black'}}>
-            <Header title="Página Inicial" />
-            <div style={{ padding: '20px' ,color:"white"}}>
-                <p>Bem-vindo ao meu projeto React!</p>
-                <Button label="Clique para saber mais" onClick={handleButtonClick} />
-            </div>
+    const handleSubmit = async e => {
+        e.preventDefault();
+
+        const data = { resposta: 'Essa é a resposta simulada para: ' + mensagem };
+        setResposta(data.resposta);
+    };
+
+
+    return(
+        <div style = {{padding:'2rem ', backgroundColor: '#7e4e5a', minHeight: '100vh',color: 'white', textAlign:'center'}}>
+            <h1 style={{fontSize: '3rem'}}>Reactiva 💌</h1>
+
+            <form onSubmit = {handleSubmit} style = {{marginBottom: '2rem' }}>
+                <input
+                    type = 'text'
+                    placeholder = 'digite sua mensagem'
+                    value={mensagem}
+                    onChange={(e) => setMensagem(e.target.value)}
+                    style={{
+                        padding: '0.5rem',
+                        borderRadius: '4px',
+                        border: 'none',
+                        width: '250px',
+                        marginRight: '1rem',
+                    }}
+                />
+                <button type = 'submit' style = {{padding: '0.5rem 1rem', backgroundColor: '#2d2d2d', color: 'white', border: 'none', borderRadius: '4px' }}>
+                    Enviar
+
+                </button>
+            </form>
+
+            {resposta && <MensagemCard texto = {resposta} />}
         </div>
     );
 }
