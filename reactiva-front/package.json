@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "kill-port 8080 && vite",
+    "dev": "kill-port 4200 && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
