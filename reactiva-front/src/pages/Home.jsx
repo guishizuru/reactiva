@@ -6,7 +6,9 @@ import MensagemCard from '../components/MensagemCard';
 export default function Home() {
     const [mensagem, setMensagem] = useState('');
     const [resposta, setResposta] = useState('');
+    const [showPopUp, setShowPopup] = useState(false);
     const textareaRef = useRef(null);
+    const popupRef = useRef(null);
 
     
     useEffect(() => {
@@ -23,7 +25,20 @@ export default function Home() {
 
         const data = { resposta: 'Essa é a resposta simulada para: ' + mensagem };
         setResposta(data.resposta);
+        setShowPopup(true);
     };
+
+    const handleCopy=() =>{
+        if(resposta){
+            navigator.clipboard.writeText(mensagem).then(() => {
+                alert('Texto copiado!');
+            });
+        }
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+      };
 
 
 
@@ -105,7 +120,7 @@ export default function Home() {
                 </button>
             </form>
 
-            <div
+         <div
         style={{
           color: '#ddd',
           fontSize: '0.9rem',
@@ -121,8 +136,92 @@ export default function Home() {
       >
         {mensagem.length} / 250
       </div>
+      {showPopUp && (
+        <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            backdropFilter: 'blur(3px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            animation: 'fadeIn 0.3s ease-in-out'
+          }}>
+        <div style={{
+            backgroundColor: 'white',
+            color: '#333',
+            padding: '2rem',
+            borderRadius: '12px',
+            maxWidth: '90vw',
+            width: '400px',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            animation: 'popIn 0.3s ease-in-out'
+    }}>
+         <div style={{ whiteSpace: 'pre-wrap', textAlign: 'left', fontSize: '1rem' }}>
+            {resposta}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <button
+              onClick={handleCopy}
+              style={{
+                backgroundColor: '#7e4e5a',
+                color: 'white',
+                border: 'none',
+                padding: '0.5rem 1rem',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '600',
+              }}
+            >
+                copiar
+            </button>
+            <button
+              onClick={handleClosePopup}
+              style={{
+                backgroundColor: '#444',
+                color: 'white',
+                border: 'none',
+                padding: '0.5rem 1rem',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '600',
+              }}
+            >
+                fechar 
+                </button>
+        </div>
+    </div>
+</div>
 
-            {resposta && <MensagemCard texto = {resposta} />}
+      )}
+
+      <style>
+      {`
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes popIn {
+            from {
+            transform: scale(0.95);
+            opacity: 0;
+            }
+            to {
+            transform: scale(1);
+            opacity: 1;
+            }
+        }
+    `}
+      </style>
+
         </div>
     );
 }
