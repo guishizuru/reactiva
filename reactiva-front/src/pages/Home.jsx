@@ -16,7 +16,17 @@ export default function Home() {
 
 
     return(
-        <div style = {{padding:'2rem ', backgroundColor: '#7e4e5a', minHeight: '100vh',color: 'white', textAlign:'center'}}>
+        <div style = {{
+            display: 'flex',
+            justifyContent:'center',
+            alignItems:'center',
+            backgroundColor: '#7e4e5a', 
+            height: '100vh',
+            color: 'white', 
+            textAlign:'center',
+            width:'100vw',
+            flexDirection:'column'
+            }}>
             <h1 style={{fontSize: '3rem'}}>Reactiva 💌</h1>
 
             <form onSubmit = {handleSubmit} style = {{marginBottom: '2rem' }}>
@@ -33,7 +43,13 @@ export default function Home() {
                         marginRight: '1rem',
                     }}
                 />
-                <button type = 'submit' style = {{padding: '0.5rem 1rem', backgroundColor: '#2d2d2d', color: 'white', border: 'none', borderRadius: '4px' }}>
+                <button type = 'submit' style = {{
+                    padding: '0.5rem 1rem', 
+                    backgroundColor: '#2d2d2d', 
+                    color: 'white', 
+                    border: 'none', 
+                    borderRadius: '4px' 
+                    }}>
                     Enviar
 
                 </button>
