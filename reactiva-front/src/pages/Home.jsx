@@ -54,7 +54,22 @@ export default function Home() {
             width:'100vw',
             flexDirection:'column'
             }}>
-            <h1 style={{fontSize: '3rem'}}>Reactiva 💌</h1>
+            <h1 style={{
+                fontFamily: '"Press Start 2P", cursive',
+                fontSize: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                userSelect: 'none'
+             }}>
+                 Reactiva
+                <img
+                    src="/pixel-heart.png"
+                    alt="coração pixelado"
+                    style={{ width: '20px', height: '20px' }}
+                />
+            </h1>
             <p style={{ 
                  fontSize: '1.25rem',
                  maxWidth: '400px',
