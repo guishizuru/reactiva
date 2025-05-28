@@ -144,23 +144,8 @@ export default function Home() {
                     rows={1}
                 />
                 <button 
-                type = 'submit' 
-                style = {{
-                    backgroundColor: '#b10024',
-                    color: '#fff',
-                    width: '100%',
-                    border: 'none',
-                    borderRadius: '6px',
-                    fontFamily: "'Press Start 2P', cursive",
-                    fontSize: '0.75rem',
-                    padding: '1rem 0',
-                    boxShadow: '4px 4px 0 #430312',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s ease-in-out',
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1f1f1f')}
-                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#2d2d2d')}
+                type = 'submit'
+                className='btn-enviar'
                     >
                     Enviar
 
@@ -256,7 +241,34 @@ export default function Home() {
       )}
 
       <style>
-      {`
+
+          {`
+          .btn-enviar {
+              background-color: #b10024;
+              color: #fff;
+              width: 100%;
+              border: 2px solid white;
+              border-radius: 6px;
+              font-family: 'Press Start 2P', cursive;
+              font-size: 0.75rem;
+              padding: 1rem 0;
+              box-shadow: 4px 4px 0 #000;
+              text-transform: uppercase;
+              cursor: pointer;
+              transition: all 0.2s ease-in-out;
+           }
+
+          .btn-enviar:hover {
+             background-color: #ff0000;
+             box-shadow: 4px 4px 0 #000, 0 0 10px #ff0000;
+             color: white;
+          }
+
+          .btn-enviar:active {
+             transform: translate(2px, 2px);
+              box-shadow: 2px 2px 0 #000;
+          }
+                
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -285,39 +297,39 @@ export default function Home() {
 }
 
        @keyframes ledGlitch {
-  0%   { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
-  }
-  10%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 5px red; 
-  }
-  20%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red;
-   }
-  30%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 2px red;
-  }
-  40%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 12px red; 
-  }
-  50%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
-  }
-  60%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red; 
-  }
-  70%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 3px red; 
-  }
-  80%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 8px red; 
-  }
-  90%  { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
-  }
-  100% { 
-  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red; 
-  }
+          0%   { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
+          }
+          10%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 5px red; 
+          }
+          20%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red;
+           }
+          30%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 2px red;
+          }
+          40%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 12px red; 
+          }
+          50%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
+          }
+          60%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red; 
+          }
+          70%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 3px red; 
+          }
+          80%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 8px red; 
+          }
+          90%  { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
+          }
+          100% { 
+          text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red; 
+          }
 
 }
 
