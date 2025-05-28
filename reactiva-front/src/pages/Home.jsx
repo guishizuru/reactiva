@@ -65,8 +65,8 @@ export default function Home() {
                 fontFamily: "'Press Start 2P', cursive",
                 fontSize: 'clamp(2.5rem, 6vw, 4rem)', // responsivo
                 color: '#FF0000',
-                textShadow: '0 0 5px #000000, 0 0 10px #000000, 0 0 20px #000000',
-                animation: 'neonPulse 1.5s ease-in-out infinite',
+                textShadow: '0 0 5px #000, 0 0 10px #000',
+                animation: 'ledGlitch 6s infinite ease-in-out',
                 marginBottom: '2rem',
                 marginTop: '1rem',
                 display: 'flex',
@@ -198,16 +198,19 @@ export default function Home() {
             animation: 'fadeIn 0.3s ease-in-out'
           }}>
         <div style={{
-            backgroundColor: 'white',
-            color: '#333',
-            padding: '2rem',
-            borderRadius: '12px',
-            maxWidth: '90vw',
-            width: '400px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
+            fontFamily: "'Press Start 2P', cursive",
+            fontSize: '0.45rem',
+            backgroundColor: '#000',
+            color: '#fff',
+            padding: '1rem 1.25rem',
+            borderRadius: '0',
+            border: '3px solid #ff0000',
+            boxShadow: '0 0 0 4px #000, inset 0 0 0 2px #ff0000',
+            textShadow: '1px 1px 0 #000',
+            lineHeight: '1.6',
+            wordBreak: 'break-word',
+            width: '90vw',
+            maxWidth: '1000px',
             animation: 'popIn 0.3s ease-in-out'
     }}>
          <div style={{ whiteSpace: 'pre-wrap', textAlign: 'left', fontSize: '1rem' }}>
@@ -217,13 +220,15 @@ export default function Home() {
             <button
               onClick={handleCopy}
               style={{
-                backgroundColor: '#7e4e5a',
-                color: 'white',
-                border: 'none',
-                padding: '0.5rem 1rem',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontWeight: '600',
+                  fontFamily: "'Press Start 2P', cursive",
+                  fontSize: '0.55rem',
+                  backgroundColor: '#ff0000',
+                  color: 'white',
+                  border: '2px solid white',
+                  boxShadow: '2px 2px 0 #000',
+                  padding: '0.5rem',
+                  cursor: 'pointer',
+                  textTransform: 'uppercase',
               }}
             >
                 copiar
@@ -231,13 +236,15 @@ export default function Home() {
             <button
               onClick={handleClosePopup}
               style={{
-                backgroundColor: '#444',
-                color: 'white',
-                border: 'none',
-                padding: '0.5rem 1rem',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontWeight: '600',
+                  fontFamily: "'Press Start 2P', cursive",
+                  fontSize: '0.55rem',
+                  backgroundColor: '#444',
+                  color: 'white',
+                  border: '2px solid white',
+                  boxShadow: '2px 2px 0 #000',
+                  padding: '0.5rem',
+                  cursor: 'pointer',
+                  textTransform: 'uppercase',
               }}
             >
                 fechar 
@@ -275,18 +282,44 @@ export default function Home() {
           100% {
             background-color: #6b3b4d;
   }
-  
-        @keyframes neonPulse {
-          0% {
-            text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 20px #000;
-          }
-          50% {
-            text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000;
-          }
-          100% {
-            text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 20px #000;
-          }
-        }
+}
+
+       @keyframes ledGlitch {
+  0%   { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
+  }
+  10%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 5px red; 
+  }
+  20%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red;
+   }
+  30%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 2px red;
+  }
+  40%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 12px red; 
+  }
+  50%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
+  }
+  60%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red; 
+  }
+  70%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 3px red; 
+  }
+  80%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 8px red; 
+  }
+  90%  { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 0px red; 
+  }
+  100% { 
+  text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 10px red; 
+  }
+
+}
 
         
     `}
