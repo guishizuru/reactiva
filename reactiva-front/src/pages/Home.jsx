@@ -8,7 +8,6 @@ export default function Home() {
     const [resposta, setResposta] = useState('');
     const [showPopUp, setShowPopup] = useState(false);
     const textareaRef = useRef(null);
-    const popupRef = useRef(null);
 
     
     useEffect(() => {
@@ -47,36 +46,55 @@ export default function Home() {
             display: 'flex',
             justifyContent:'center',
             alignItems:'center',
-            backgroundColor: '#7e4e5a', 
-            height: '100vh',
-            color: 'white', 
+            backgroundColor: '#7e4e5a',
+            animation: 'bgPulse 6s infinite',
+            minHeight: '100vh',
+            color: 'white',
             textAlign:'center',
-            width:'100vw',
-            flexDirection:'column'
+            width:'100%',
+            flexDirection:'column',
+            padding:'1rem',
+            boxSizing: 'border-box',
             }}>
             <h1 style={{
-                fontFamily: '"Press Start 2P", cursive',
-                fontSize: '1.5rem',
+                fontFamily: "'Press Start 2P', cursive",
+                fontSize: 'clamp(2.5rem, 6vw, 4rem)', // responsivo
+                color: '#FF0000',
+                textShadow: '0 0 5px #000000, 0 0 10px #000000, 0 0 20px #000000',
+                animation: 'neonPulse 1.5s ease-in-out infinite',
+                marginBottom: '2rem',
+                marginTop: '1rem',
                 display: 'flex',
-                alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.5rem',
-                userSelect: 'none'
-             }}>
-                 Reactiva
-                <img
-                    src="/pixel-heart.png"
-                    alt="coração pixelado"
-                    style={{ width: '20px', height: '20px' }}
-                />
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                textAlign: 'center',
+                textTransform: 'uppercase',
+                letterSpacing: '2px',
+            }}>
+                Reactiva
+                <span style={{ display: 'inline-block', verticalAlign: 'middle', position: 'relative', top: '-0.15em' }}>
+                    ❤️
+                  </span>
             </h1>
-            <p style={{ 
-                 fontSize: '1.25rem',
-                 maxWidth: '400px',
-                 marginBottom: '2rem',
-                 color: '#f0dede',
-                 lineHeight: '1.4',
-                 userSelect: 'none', 
+
+
+
+            <p style={{
+                fontFamily: "'Press Start 2P', cursive",
+                fontSize: '0.85rem',
+                maxWidth: '400px',
+                marginBottom: '2rem',
+                backgroundColor: '#000',
+                color: '#fff',
+                padding: '1rem 1.5rem',
+                borderRadius: '10px',
+                border: '3px solid ##FF0000',
+                boxShadow: '0 0 15px ##FF0000',
+                lineHeight: '1.4',
+                userSelect: 'none',
+                textAlign: 'center',
+                wordWrap: 'break-word',
                 }}>
                 Escreva o que sente e receba uma carta de amor pronta para emocionar quem você ama.
             </p>
@@ -234,6 +252,30 @@ export default function Home() {
             opacity: 1;
             }
         }
+        @keyframes bgPulse {
+          0% {
+            background-color: #6b3b4d;
+          }
+          50% {
+            background-color: #703f52;
+          }
+          100% {
+            background-color: #6b3b4d;
+  }
+  
+        @keyframes neonPulse {
+          0% {
+            text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 20px #000;
+          }
+          50% {
+            text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000;
+          }
+          100% {
+            text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 20px #000;
+          }
+        }
+
+        
     `}
       </style>
 
