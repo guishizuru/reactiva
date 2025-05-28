@@ -44,17 +44,22 @@ export default function Home() {
     return(
         <div style = {{
             display: 'flex',
-            justifyContent:'center',
-            alignItems:'center',
-            backgroundColor: '#7e4e5a',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundImage: "url('/bg-reactiva.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
             animation: 'bgPulse 6s infinite',
             minHeight: '100vh',
             color: 'white',
-            textAlign:'center',
-            width:'100%',
-            flexDirection:'column',
-            padding:'1rem',
+            textAlign: 'center',
+            width: '100%',
+            flexDirection: 'column',
+            padding: '1rem',
             boxSizing: 'border-box',
+            position: 'relative',
+            overflow: 'hidden'
             }}>
             <h1 style={{
                 fontFamily: "'Press Start 2P', cursive",
