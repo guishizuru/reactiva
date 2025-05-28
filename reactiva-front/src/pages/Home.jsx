@@ -169,16 +169,15 @@ export default function Home() {
 
          <div
         style={{
-          color: '#ddd',
-          fontSize: '0.9rem',
-          fontWeight: '500',
-          maxWidth: '400px',
-          width: '100%',
-          textAlign: 'right',
-          fontFamily: 'monospace',
-          userSelect: 'none',
-          marginBottom: '2rem',
-          height: '20px', 
+            fontFamily: "'Press Start 2P', cursive",
+            fontSize: '0.65rem',
+            color: 'white',
+            textAlign: 'right',
+            width: '100%',
+            maxWidth: '400px',
+            userSelect: 'none',
+            marginTop: '0.5rem',
+            textShadow: '1px 1px 0 #000',
         }}
       >
         {mensagem.length} / 250
