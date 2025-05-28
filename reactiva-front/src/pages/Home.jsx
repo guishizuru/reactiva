@@ -87,32 +87,36 @@ export default function Home() {
 
             <p style={{
                 fontFamily: "'Press Start 2P', cursive",
-                fontSize: '0.85rem',
-                maxWidth: '400px',
-                marginBottom: '2rem',
+                fontSize: '0.65rem',
                 backgroundColor: '#000',
                 color: '#fff',
-                padding: '1rem 1.5rem',
-                borderRadius: '10px',
-                border: '3px solid ##FF0000',
-                boxShadow: '0 0 15px ##FF0000',
-                lineHeight: '1.4',
+                padding: '1rem',
+                border: '2px solid white',
+                boxShadow: `
+                  0px 0px 0px 2px white,
+                  4px 4px 0px 0px black
+                  `,
+                borderRadius: '0',
+                maxWidth: '400px',
+                textAlign: 'left',
                 userSelect: 'none',
-                textAlign: 'center',
-                wordWrap: 'break-word',
+                lineHeight: '1.5',
+                position: 'relative',
                 }}>
-                Escreva o que sente e receba uma carta de amor pronta para emocionar quem você ama.
+                ESCREVA O QUE SENTE E RECEBA UMA CARTA DE AMOR PRONTA<br />
+                PARA EMOCIONAR QUEM VOCÊ AMA
             </p>
 
             <form 
             onSubmit = {handleSubmit} 
             style = {{
-                marginBottom: '0.5rem',
                 width: '100%',
                 maxWidth: '400px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'stretch',
+                alignItems: 'center',
+                gap: '1rem',
+                fontFamily: "'Press Start 2P', cursive",
                 }}>
                 <textarea 
                     ref={textareaRef}
@@ -123,32 +127,37 @@ export default function Home() {
                     onChange={(e) => setMensagem(e.target.value)}
                     style={{
                         width: '100%',
-                        padding: '0.75rem',
-                        borderRadius: '6px',
-                        border: 'none',
-                        resize: 'none',
-                        fontFamily: 'inherit',
-                        fontSize: '1rem',
-                        boxSizing: 'border-box',
+                        backgroundColor: '#f0e7de',
                         color: '#000',
-                        minHeight: '80px',
+                        padding: '0.75rem 1rem',
+                        border: 'none',
+                        borderRadius: '6px',
+                        boxShadow: '4px 4px 0 #000',
+                        fontFamily: "'Press Start 2P', cursive",
+                        fontSize: '0.7rem',
+                        resize: 'none',
+                        outline: 'none',
                         lineHeight: '1.4',
+                        textTransform: 'lowercase',
+                        overflow: 'hidden',
                     }}
                     rows={1}
                 />
                 <button 
                 type = 'submit' 
                 style = {{
-                    marginTop: '1rem',
-                    padding: '0.75rem',
-                    backgroundColor: '#2d2d2d',
-                    color: 'white',
+                    backgroundColor: '#b10024',
+                    color: '#fff',
+                    width: '100%',
                     border: 'none',
                     borderRadius: '6px',
+                    fontFamily: "'Press Start 2P', cursive",
+                    fontSize: '0.75rem',
+                    padding: '1rem 0',
+                    boxShadow: '4px 4px 0 #430312',
+                    textTransform: 'uppercase',
                     cursor: 'pointer',
-                    fontSize: '1rem',
-                    fontWeight: '600',
-                    transition: 'background-color 0.3s',
+                    transition: 'transform 0.2s ease-in-out',
                     }}
                     onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1f1f1f')}
                     onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#2d2d2d')}
