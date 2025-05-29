@@ -1,6 +1,6 @@
 package com.example.ractiva_api.controller;
 
-import com.example.ractiva_api.Model.PromptRequest;
+import com.example.ractiva_api.model.PromptRequest;
 import com.example.ractiva_api.service.GeminiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class ReactivaController {
     private GeminiService geminiService;
 
     @PostMapping
-    public Mono<String> gerarCarta(@RequestBody PromptRequest request){
+    public String gerarCarta(@RequestBody PromptRequest request){
         return geminiService.gerarCarta(request.getPrompt());
     }
 

@@ -1,4 +1,4 @@
-package com.example.ractiva_api.Model;
+package com.example.ractiva_api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
