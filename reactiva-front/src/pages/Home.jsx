@@ -28,7 +28,7 @@ export default function Home() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ prompt: mensagem }) // Certifique-se que o campo seja "prompt"
+                body: JSON.stringify({ prompt: mensagem })
             });
 
             if (!response.ok) {
@@ -36,7 +36,7 @@ export default function Home() {
             }
 
             const data = await response.json();
-            setResposta(data.resposta); // Certifique-se que o back está retornando esse campo
+            setResposta(data.resposta);
             setShowPopup(true);
         } catch (error) {
             console.error('Erro:', error);
