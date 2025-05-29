@@ -34,41 +34,71 @@ public class GeminiService {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public Mono<String> gerarCarta(String prompt) {
-        String jsonBody = String.format("""
-                {
-                  "prompt": {
-                    "text": "%s"
-                  },
-                  "temperature": 0.7,
-                  "maxOutputTokens": 256
-                }
-                """, prompt);
+        try {
+            String escapedPrompt = objectMapper.writeValueAsString(prompt);
 
-
-        return webClient.post()
-                .uri(uriBuilder -> uriBuilder.queryParam("key", apiKey).build())
-                .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(jsonBody)
-                .retrieve()
-                .bodyToMono(String.class)
-                .map(resposta -> {
-                    try {
-                        Object json = objectMapper.readValue(resposta, Object.class);
-                        ObjectWriter writer = objectMapper.writerWithDefaultPrettyPrinter();
-                        String jsonFormatado = writer.writeValueAsString(json);
-                        logger.info("Resposta Gemini formatada:\n{}", jsonFormatado);
-                    } catch (Exception e) {
-                        logger.info("Resposta Gemini (raw): {}", resposta);
+            String jsonBody = String.format("""
+                    {
+                      "contents": [
+                        {
+                          "parts": [
+                            {
+                              "text": %s
+                            }
+                          ]
+                        }
+                      ]
                     }
+                    """, escapedPrompt);
 
-                    Carta carta = Carta.builder()
-                            .prompt(prompt)
-                            .resposta(resposta)
-                            .criadoEm(System.currentTimeMillis())
-                            .build();
-                    cartaRepository.save(carta);
-                    return resposta;
-                })
-                .doOnError(e -> logger.error("Erro ao chamar Gemini API", e));
+            return webClient.post()
+                    .uri(uriBuilder -> uriBuilder
+                            .path("/v1beta/models/gemini-2.0-flash:generateContent")
+                            .queryParam("key", apiKey)
+                            .build())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(jsonBody)
+                    .retrieve()
+                    .onStatus(status -> status.isError(), response -> {
+                        return response.bodyToMono(String.class).flatMap(errorBody -> {
+                            logger.error("Erro da API Gemini (HTTP {}): {}", response.statusCode(), errorBody);
+                            return Mono.error(new RuntimeException("Erro da API Gemini: " + errorBody));
+                        });
+                    })
+                    .bodyToMono(String.class)
+                    .flatMap(resposta -> {
+                        logger.info("Resposta crua da Gemini API:\n{}", resposta);
+
+                        try {
+                            var root = objectMapper.readTree(resposta);
+                            var textoGerado = root.path("candidates")
+                                    .get(0)
+                                    .path("content")
+                                    .path("parts")
+                                    .get(0)
+                                    .path("text")
+                                    .asText();
+
+                            Carta carta = Carta.builder()
+                                    .prompt(prompt)
+                                    .resposta(textoGerado)
+                                    .criadoEm(System.currentTimeMillis())
+                                    .build();
+
+                            cartaRepository.save(carta);
+
+                            return Mono.just(textoGerado);
+
+                        } catch (Exception e) {
+                            logger.error("Erro ao parsear a resposta Gemini", e);
+                            return Mono.error(e);
+                        }
+                    })
+                    .doOnError(e -> logger.error("Erro ao chamar Gemini API", e));
+
+        } catch (Exception e) {
+            logger.error("Erro ao preparar a requisição para Gemini API", e);
+            return Mono.error(e);
+        }
     }
 }
