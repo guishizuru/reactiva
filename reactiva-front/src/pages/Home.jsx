@@ -22,9 +22,26 @@ export default function Home() {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        const data = { resposta: 'Essa é a resposta simulada para: ' + mensagem };
-        setResposta(data.resposta);
-        setShowPopup(true);
+        try {
+            const response = await fetch('http://localhost:8080/api/reactiva', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: mensagem }) // Certifique-se que o campo seja "prompt"
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao obter resposta do servidor.');
+            }
+
+            const data = await response.json();
+            setResposta(data.resposta); // Certifique-se que o back está retornando esse campo
+            setShowPopup(true);
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro ao conectar com o servidor.');
+        }
     };
 
     const handleCopy=() =>{
