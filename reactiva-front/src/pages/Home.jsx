@@ -39,6 +39,7 @@ export default function Home() {
             setResposta(data.resposta);
             setShowPopup(true);
         } catch (error) {
+            console.log(error)
             console.error('Erro:', error);
             alert('Erro ao conectar com o servidor.');
         }
