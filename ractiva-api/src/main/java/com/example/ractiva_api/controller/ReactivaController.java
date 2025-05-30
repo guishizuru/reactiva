@@ -1,10 +1,14 @@
 package com.example.ractiva_api.controller;
 
-import com.example.ractiva_api.model.PromptRequest;
+import com.example.ractiva_api.dtos.CartaResponseDto;
+import com.example.ractiva_api.dtos.PromptRequestDto;
+
 import com.example.ractiva_api.service.GeminiService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
+
 
 @RestController
 @RequestMapping("api/reactiva")
@@ -15,8 +19,8 @@ public class ReactivaController {
     private GeminiService geminiService;
 
     @PostMapping
-    public String gerarCarta(@RequestBody PromptRequest request){
-        return geminiService.gerarCarta(request.getPrompt());
+    public ResponseEntity<CartaResponseDto> gerarCarta(@RequestBody PromptRequestDto request) throws JsonProcessingException {
+        return ResponseEntity.ok(new CartaResponseDto(geminiService.gerarCarta(request.getPrompt())));
     }
 
 }
