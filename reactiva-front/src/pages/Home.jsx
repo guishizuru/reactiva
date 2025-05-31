@@ -121,8 +121,7 @@ export default function Home() {
                 lineHeight: '1.5',
                 position: 'relative',
                 }}>
-                ESCREVA O QUE SENTE E RECEBA UMA CARTA DE AMOR PRONTA<br />
-                PARA EMOCIONAR QUEM VOCÊ AMA
+                ESCREVA O QUE SENTE E RECEBA UMA CARTA DE AMOR PRONTA PARA EMOCIONAR QUEM VOCÊ AMA
             </p>
 
             <form 
@@ -135,8 +134,10 @@ export default function Home() {
                 alignItems: 'center',
                 gap: '1rem',
                 fontFamily: "'Press Start 2P', cursive",
+
                 }}>
-                <textarea 
+
+                <textarea
                     ref={textareaRef}
                     placeholder = 'digite sua mensagem'
                     value={mensagem}
@@ -161,6 +162,27 @@ export default function Home() {
                     }}
                     rows={1}
                 />
+                {mensagem.length > 0 && (
+                <div  style={{
+                    fontFamily: "'Press Start 2P', cursive",
+                    fontSize: '0.65rem',
+                    color: 'white',
+                    textAlign: 'right',
+                    width: '100%',
+                    maxWidth: '400px',
+                    userSelect: 'none',
+                    marginTop: '0.5rem',
+                    textShadow: '1px 1px 0 #000',
+                    }}>
+                    {mensagem.length} / 250
+                    </div>
+                )}
+
+
+
+
+
+
                 <button 
                 type = 'submit'
                 className='btn-enviar'
@@ -170,21 +192,7 @@ export default function Home() {
                 </button>
             </form>
 
-         <div
-        style={{
-            fontFamily: "'Press Start 2P', cursive",
-            fontSize: '0.65rem',
-            color: 'white',
-            textAlign: 'right',
-            width: '100%',
-            maxWidth: '400px',
-            userSelect: 'none',
-            marginTop: '0.5rem',
-            textShadow: '1px 1px 0 #000',
-        }}
-      >
-        {mensagem.length} / 250
-      </div>
+
       {showPopUp && (
         <div style={{
             position: 'fixed',
