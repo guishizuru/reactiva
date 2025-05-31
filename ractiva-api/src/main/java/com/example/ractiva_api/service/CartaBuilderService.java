@@ -22,4 +22,22 @@ public class CartaBuilderService {
         cartaRepository.save(carta);
 
     }
+
+    public String getGerarPrompt(String prompt) {
+
+        return String.format("""
+                Você é um assistente que escreve cartas curtas e sentimentais com base no que o usuário deseja expressar. 
+                Sempre responda apenas com o conteúdo da carta, sem explicações, saudações ou instruções extras.
+                
+                Inclua o nome ou a pessoa mencionada (como “minha mãe”, “João”, “meu namorado”) se o usuário indicar para 
+                quem é a carta.
+                
+                A carta deve ser sensível, natural, emocional e fácil de ler, com no máximo 500 caracteres. Use linguagem 
+                simples, bonita e direta. Nunca fuja do tema principal do sentimento descrito pelo usuário (como amor, 
+                saudade, carinho, perdão ou gratidão). 
+                Nunca fale de outros assuntos.
+                
+                Pedido do usuário:%s
+                """, prompt);
+    }
 }
