@@ -9,7 +9,7 @@ export default function Home() {
     const [showPopUp, setShowPopup] = useState(false);
     const textareaRef = useRef(null);
     const [showSobre, setShowSobre] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(false);
 
     
     useEffect(() => {
@@ -23,6 +23,7 @@ export default function Home() {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        setIsLoading(true);
 
         try {
             const response = await fetch('http://localhost:8080/api/reactiva', {
@@ -44,6 +45,8 @@ export default function Home() {
             console.log(error)
             console.error('Erro:', error);
             alert('Erro ao conectar com o servidor.');
+        }finally {
+            setIsLoading(false);
         }
     };
 
@@ -345,6 +348,31 @@ export default function Home() {
                 </div>
             )}
 
+            {isLoading && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                    backdropFilter: 'blur(2px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 9999,
+                    flexDirection: 'column',
+                    fontFamily: "'Press Start 2P', cursive",
+                    color: '#ff0000',
+                    fontSize: '0.8rem',
+                    textAlign: 'center',
+                    animation: 'fadeIn 0.3s ease-in-out'
+                }}>
+                    <div className="pixel-heart" />
+                    <p style={{ marginTop: '1rem' }}>carregando emoção...</p>
+                </div>
+            )}
+
       <style>
 
           {`
@@ -373,6 +401,36 @@ export default function Home() {
              transform: translate(2px, 2px);
               box-shadow: 2px 2px 0 #000;
           }
+          .pixel-heart {
+          width: 32px;
+          height: 32px;
+          background: red;
+          position: relative;
+          animation: heartbeat 1s infinite;
+          transform: rotate(45deg);
+        }
+        .pixel-heart::before,
+        .pixel-heart::after {
+          content: '';
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          background: red;
+        }
+        .pixel-heart::before {
+          top: -16px;
+          left: 0;
+          border-radius: 50%;
+        }
+        .pixel-heart::after {
+          left: -16px;
+          top: 0;
+          border-radius: 50%;
+        }
+        @keyframes heartbeat {
+          0% { transform: scale(1) rotate(4500==deg); }
+          50% { transform: scale(1.2) rotate(45deg); }
+          100% { transform: scale(1) rotate(45deg); }
                 
         @keyframes fadeIn {
             from { opacity: 0; }
