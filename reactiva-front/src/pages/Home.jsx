@@ -8,6 +8,8 @@ export default function Home() {
     const [resposta, setResposta] = useState('');
     const [showPopUp, setShowPopup] = useState(false);
     const textareaRef = useRef(null);
+    const [showSobre, setShowSobre] = useState(false);
+
 
     
     useEffect(() => {
@@ -192,6 +194,27 @@ export default function Home() {
                 </button>
             </form>
 
+            <button
+                onClick={() => setShowSobre(true)}
+                style={{
+                    position: 'fixed',
+                    top: '1rem',
+                    right: '1rem',
+                    backgroundColor: '#000',
+                    color: '#fff',
+                    fontFamily: "'Press Start 2P', cursive",
+                    fontSize: '0.6rem',
+                    padding: '0.5rem',
+                    border: '2px solid white',
+                    boxShadow: '2px 2px 0 #000',
+                    zIndex: 10000,
+                    cursor: 'pointer',
+                }}
+            >
+                SOBRE
+            </button>
+
+
 
       {showPopUp && (
         <div style={{
@@ -265,6 +288,62 @@ export default function Home() {
 </div>
 
       )}
+            {showSobre && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                    backdropFilter: 'blur(3px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 9999,
+                    animation: 'fadeIn 0.3s ease-in-out'
+                }}>
+                    <div style={{
+                        fontFamily: "'Press Start 2P', cursive",
+                        fontSize: '0.75rem',
+                        backgroundColor: '#000',
+                        color: '#fff',
+                        padding: '3rem',
+                        border: '3px solid #00ffcc',
+                        boxShadow: '0 0 0 4px #000, inset 0 0 0 2px #00ffcc',
+                        textShadow: '1px 1px 0 #000',
+                        width: '90vw',
+                        maxWidth: '900px',
+                        lineHeight: '1.6',
+                    }}>
+                        <h2 style={{ fontSize: '1rem', marginBottom: '1rem', color: '#00ffcc' }}>📜 SOBRE O PROJETO</h2>
+                        <p style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>
+                            <strong>Reactiva</strong> é uma aplicação feita para ajudar você a dizer o que sente. 💌<br /><br />
+                            Nem sempre é fácil colocar em palavras o que vai no coração. Às vezes a emoção trava, a mente foge, ou simplesmente não sabemos por onde começar. É aí que entra o Reactiva: basta escrever como você se sente, com suas próprias palavras, e nós transformamos isso em uma carta de amor sincera, sensível e única.<br /><br />
+                            Utilizamos <strong>inteligência artificial</strong> para interpretar a sua mensagem e criar um texto personalizado — como se fosse escrito por você, mas com aquele toque especial.<br /><br />
+                            Seja para um bilhete, uma carta longa ou uma declaração espontânea, o Reactiva é seu aliado para transformar sentimentos em palavras. Porque todo amor merece ser dito da melhor forma possível. ❤️
+                        </p>
+                        <div style={{ textAlign: 'right', marginTop: '1rem' }}>
+                            <button
+                                onClick={() => setShowSobre(false)}
+                                style={{
+                                    fontFamily: "'Press Start 2P', cursive",
+                                    fontSize: '0.6rem',
+                                    backgroundColor: '#00ffcc',
+                                    color: 'black',
+                                    border: '2px solid white',
+                                    boxShadow: '2px 2px 0 #000',
+                                    padding: '0.5rem 1rem',
+                                    cursor: 'pointer',
+                                    textTransform: 'uppercase',
+                                }}
+                            >
+                                fechar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
       <style>
 
