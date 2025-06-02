@@ -321,10 +321,10 @@ export default function Home() {
                     }}>
                         <h2 style={{ fontSize: '1rem', marginBottom: '1rem', color: '#00ffcc' }}>📜 SOBRE O PROJETO</h2>
                         <p style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>
-                            <strong>Reactiva</strong> é uma aplicação feita para ajudar você a dizer o que sente. 💌<br /><br />
-                            Nem sempre é fácil colocar em palavras o que vai no coração. Às vezes a emoção trava, a mente foge, ou simplesmente não sabemos por onde começar. É aí que entra o Reactiva: basta escrever como você se sente, com suas próprias palavras, e nós transformamos isso em uma carta de amor sincera, sensível e única.<br /><br />
-                            Utilizamos <strong>inteligência artificial</strong> para interpretar a sua mensagem e criar um texto personalizado — como se fosse escrito por você, mas com aquele toque especial.<br /><br />
-                            Seja para um bilhete, uma carta longa ou uma declaração espontânea, o Reactiva é seu aliado para transformar sentimentos em palavras. Porque todo amor merece ser dito da melhor forma possível. ❤️
+                            <strong>Reactiva</strong> é uma aplicação feita para ajudar você a expressar o que sente. 💌<br /><br />
+                            Nem sempre é fácil transformar emoções em palavras. Às vezes o coração aperta, a mente se embaralha ou simplesmente falta inspiração para começar. É aí que entra o Reactiva: você escreve como se sente, com suas próprias palavras, e nós transformamos isso em uma carta de amor sincera, sensível e única.<br /><br />
+                            Utilizamos <strong>inteligência artificial</strong> para interpretar sua mensagem e criar um texto personalizado — como se fosse escrito por você, mas com aquele toque especial.<br /><br />
+                            Seja para um bilhete simples, uma carta longa ou uma declaração inesperada, o Reactiva é seu aliado para transformar sentimentos em palavras. Porque todo amor merece ser dito da melhor forma possível. ❤️
                         </p>
                         <div style={{ textAlign: 'right', marginTop: '1rem' }}>
                             <button
