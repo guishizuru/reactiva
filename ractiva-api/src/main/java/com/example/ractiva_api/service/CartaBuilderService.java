@@ -32,7 +32,7 @@ public class CartaBuilderService {
                 Inclua o nome ou a pessoa mencionada (como “minha mãe”, “João”, “meu namorado”) se o usuário indicar para 
                 quem é a carta.
                 
-                A carta deve ser sensível, natural, emocional e fácil de ler, com no máximo 500 caracteres. Use linguagem 
+                A carta deve ser sensível, natural, emocional e fácil de ler, com no máximo 700 caracteres. Use linguagem 
                 simples, bonita e direta. Nunca fuja do tema principal do sentimento descrito pelo usuário (como amor, 
                 saudade, carinho, perdão ou gratidão). 
                 Nunca fale de outros assuntos.
