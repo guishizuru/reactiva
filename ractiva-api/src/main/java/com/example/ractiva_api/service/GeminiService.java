@@ -20,9 +20,6 @@ import java.util.List;
 @Service
 public class GeminiService {
 
-    @Autowired
-    private CartaRepository cartaRepository;
-
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     private final RestTemplate restTemplate = new RestTemplate();
