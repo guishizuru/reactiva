@@ -52,7 +52,7 @@ export default function Home() {
 
     const handleCopy=() =>{
         if(resposta){
-            navigator.clipboard.writeText(mensagem).then(() => {
+            navigator.clipboard.writeText(resposta).then(() => {
                 alert('Texto copiado!');
             });
         }
